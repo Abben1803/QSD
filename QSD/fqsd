@@ -1,0 +1,23 @@
+DWORD file_version
+DWORD block_count
+SSTR qsd_name
+:FOREACH( block_count )
+    DWORD record_count
+    SSTR block_name
+    :FOREACH( record_count )
+        BYTE check_next
+        DWORD condition_count
+        DWORD action_count
+        SSTR record_name
+        :FOREACH( condition_count )
+            DWORD length
+            DWORD command
+            BYTE[length - 8] data
+        :ENDFOR
+        :FOREACH( action_count )
+            DWORD length
+            DWORD command
+            BYTE[length - 8] data
+        :ENDFOR
+    :ENDFOR
+:ENDFOR
